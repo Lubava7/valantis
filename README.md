@@ -28,6 +28,9 @@ $ npm start
 - Для хеширования пароля к АПИ была использовала библиотека md5
 - Кнопки на карточках сделаны исключительно для баланса и красоты карточки, они не несут никакого функционала
 
+Превью:
+<img src="./src/ui/img/preview.png" alt="Logo of the project" align="right" width="300px" height="300px">
+
 ## Stracture
 
 ```bach
