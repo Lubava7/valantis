@@ -29,7 +29,7 @@ $ npm start
 - Кнопки на карточках сделаны исключительно для баланса и красоты карточки, они не несут никакого функционала
 
 Превью:
-<img src="./src/ui/img/preview.png" alt="Logo of the project" align="right" width="100%" height="500px">
+<img src="./src/ui/img/preview.png" alt="Logo of the project" align="right" width="100%" height="700px">
 
 ## Stracture
 
