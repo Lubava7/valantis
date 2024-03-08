@@ -2,7 +2,7 @@
   "name": "valantis",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lubava7.github.io/testValantis/",
+  "homepage": "https://lubava7.github.io/valantis/",
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
