@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { getData } from '../../modules/items/ItemsSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../modules/redux/store';
-import { Pagination, Card, Snackbar, Filters } from '../../components';
+import { Pagination, Card, Filters } from '../../components';
 import { ListWrapper, CardList, LoadData, NoData } from './styled';
 import { Query } from '../Filters/Filters';
 
@@ -53,7 +53,6 @@ const ItemsList: FC<Props> = () => {
 
   return (
     <>
-      <Snackbar />
       <ListWrapper>
         <Filters onSearch={onSearch} />
         <CardList>

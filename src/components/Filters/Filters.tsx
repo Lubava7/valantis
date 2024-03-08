@@ -6,7 +6,7 @@ import { Wrapper, Content, Button } from './styled';
 export interface Query {
   product: string;
   brand: string;
-  price: number | null;
+  price: number;
 }
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 const initQueryState = {
   product: '',
   brand: '',
-  price: null,
+  price: 0,
 };
 
 const Filters: FC<Props> = ({ onSearch }) => {

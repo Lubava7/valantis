@@ -41,7 +41,6 @@ $ npm start
     > Header // хедер с лого
     > ItemsList // Список товаров
     > Pagination // пагинация
-    > Snackbar // снекбар при обработке ошибок
   > modules
     > items // слайсы и интерфейсы для товаров
     > redux // стор и редюсеры

@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import md5 from 'md5';
-import { ItemState } from './interface';
+import { ItemState, ItemIterface } from './interface';
 import { getCurrentDate } from './getCurrentDate';
 import { Query } from '../../components/Filters/Filters';
 
 const link = 'http://api.valantis.store:40000/';
-
 const getAuthHeader = () => {
   const date = getCurrentDate();
   const headers = {
@@ -14,6 +13,7 @@ const getAuthHeader = () => {
   };
   return headers;
 };
+
 const initialState: ItemState = {
   items: [],
   totalPages: 1,
@@ -24,17 +24,15 @@ const itemsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getData.fulfilled, (state, action) => {
-      const items: any[] = action.payload.res;
-
-      const uniqueItems = Array.from(new Set(items.map((item) => item.id))).map(
-        (id) => {
-          return items.find((item) => item.id === id);
-        }
-      );
-      state.items = uniqueItems;
-      state.totalPages = action.payload.totalPages;
-    });
+    builder
+      .addCase(getData.fulfilled, (state, action) => {
+        const items: ItemIterface[] = action.payload.res;
+        state.items = items;
+        state.totalPages = action.payload.totalPages;
+      })
+      .addCase(getData.rejected, (state, action) => {
+        console.error('API request failed with error:', action.error.message);
+      });
   },
 });
 
@@ -63,7 +61,10 @@ export const getData = createAsyncThunk(
       { headers: authHeader }
     );
 
-    if (!resIds.data.result.length)
+    const ids = resIds.data.result;
+    const uniqueIds: any = Array.from(new Set(ids));
+
+    if (!uniqueIds.length)
       return {
         res: [],
         totalPages: 1,
@@ -73,13 +74,14 @@ export const getData = createAsyncThunk(
     const resData = await axios.post(
       link,
       {
-        params: { ids: resIds.data.result },
+        params: { ids: uniqueIds },
         action: 'get_items',
       },
       { headers: authHeader }
     );
 
     const totalCountHeader = resIds.headers['content-length'];
+
     const totalCount = Number(totalCountHeader);
     const totalPages = Math.ceil(totalCount / params.limit);
 

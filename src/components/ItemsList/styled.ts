@@ -24,7 +24,7 @@ export const CardList = styled.div`
   border: 1px solid var(${colors.MAIN_COLOR});
   border-radius: 10px;
   background-color: #ffffff;
-  padding: 24px;
+  padding: 24px 24px 70px 24px;
 `;
 
 export const LoadData = styled.div`
