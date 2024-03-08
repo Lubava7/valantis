@@ -6,7 +6,7 @@ import { getCurrentDate } from './getCurrentDate';
 import { Query } from '../../components/Filters/Filters';
 
 const link =
-  'http://api.valantis.store:40000/' || 'https://api.valantis.store:41000/';
+  'https://api.valantis.store:41000/' || 'http://api.valantis.store:40000/';
 const getAuthHeader = () => {
   const date = getCurrentDate();
   const headers = {
